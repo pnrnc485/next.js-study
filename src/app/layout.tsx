@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +20,10 @@ export default function RootLayout({
     <html lang="ja">
       <body className="container mx-auto bg-slate-700 text-slate-50">
         <Header />
+        {/* 子が読み込み完了するまでフォールバックを表示できる */}
+        {/* <Suspense fallback={<Loading />}> */}
         {children}
+        {/* </Suspense> */}
         <Footer />
       </body>
     </html>
