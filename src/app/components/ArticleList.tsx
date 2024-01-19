@@ -21,7 +21,10 @@ const ArticleList = ({ articles }: ArticleListProps) => {
             />
           </Link>
           <div className="flex flex-col bg-white justify-start p-6">
-            <Link href="#" className="text-blue-700 pb-4 font-bold">
+            <Link
+              href={`articles/${article.id}`}
+              className="text-blue-700 pb-4 font-bold"
+            >
               Technology
             </Link>
             <Link
