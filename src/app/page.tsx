@@ -6,7 +6,6 @@ export default function Home() {
     <div className="md:flex">
       <section className="flex flex-col w-full md:w-2/3 items-center px-4">
         <ArticleList />
-        <ArticleList />
       </section>
 
       <aside className="flex flex-col w-full md:w-1/3 items-center px-3 md:pl-6">
