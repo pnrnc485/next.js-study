@@ -1,11 +1,14 @@
 import Image from "next/image";
 import ArticleList from "./components/ArticleList";
+import { getAllArticles } from "@/blogAPI";
 
-export default function Home() {
+export default async function Home() {
+  const articles = await getAllArticles();
+
   return (
     <div className="md:flex">
       <section className="flex flex-col w-full md:w-2/3 items-center px-4">
-        <ArticleList />
+        <ArticleList articles={articles} />
       </section>
 
       <aside className="flex flex-col w-full md:w-1/3 items-center px-3 md:pl-6">
