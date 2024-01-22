@@ -19,12 +19,14 @@ export default function RootLayout({
     // 前ページ共通のレイアウトをかく
     <html lang="ja">
       <body className="container mx-auto bg-slate-700 text-slate-50">
-        <Header />
-        {/* 子が読み込み完了するまでフォールバックを表示できる */}
-        {/* <Suspense fallback={<Loading />}> */}
-        {children}
-        {/* </Suspense> */}
-        <Footer />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          {/* 子が読み込み完了するまでフォールバックを表示できる */}
+          {/* <Suspense fallback={<Loading />}> */}
+          <main className="flex-grow">{children}</main>
+          {/* </Suspense> */}
+          <Footer />
+        </div>
       </body>
     </html>
   );

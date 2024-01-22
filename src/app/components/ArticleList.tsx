@@ -1,7 +1,5 @@
 import { Article } from "@/types";
-import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 import ArticleCard from "./ArticleCard";
 
 type ArticleListProps = {
