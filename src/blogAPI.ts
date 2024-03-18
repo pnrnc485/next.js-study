@@ -63,7 +63,7 @@ export const createArticle = async (
 };
 
 export const deleteArticle = async (id: string): Promise<Article> => {
-  const res = await fetch(`http://localhost:3005/posts`, {
+  const res = await fetch(`http://localhost:3005/posts/${id}`, {
     method: "DELETE",
   });
 
