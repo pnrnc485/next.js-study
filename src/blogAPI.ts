@@ -10,7 +10,7 @@ export const getAllArticles = async (): Promise<Article[]> => {
   }
 
   // ローディングの表示のため意図的に遅延を発生
-  await new Promise((resolve) => setTimeout(resolve, 1500))
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const articles = await res.json();
   return articles;
@@ -18,7 +18,7 @@ export const getAllArticles = async (): Promise<Article[]> => {
 
 export const getDetailArticle = async (id: string): Promise<Article> => {
   const res = await fetch(`http://localhost:3005/posts/${id}`, {
-     next: { revalidate: 60 },
+    next: { revalidate: 60 },
   }); //ISR
 
   // ページがない場合
@@ -31,13 +31,17 @@ export const getDetailArticle = async (id: string): Promise<Article> => {
   }
 
   // ローディングの表示のため意図的に遅延を発生
-  await new Promise((resolve) => setTimeout(resolve, 1500))
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const article = await res.json();
   return article;
 };
 
-export const createArticle = async (id: string, title: string, content: string): Promise<Article> => {
+export const createArticle = async (
+  id: string,
+  title: string,
+  content: string
+): Promise<Article> => {
   const currentDateTime = new Date().toISOString();
   const res = await fetch(`http://localhost:3005/posts`, {
     method: "POST",
@@ -52,8 +56,24 @@ export const createArticle = async (id: string, title: string, content: string):
   }
 
   // ローディングの表示のため意図的に遅延を発生
-  await new Promise((resolve) => setTimeout(resolve, 1500))
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const newArticle = await res.json();
   return newArticle;
+};
+
+export const deleteArticle = async (id: string): Promise<Article> => {
+  const res = await fetch(`http://localhost:3005/posts`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error("エラーが発生");
+  }
+
+  // ローディングの表示のため意図的に遅延を発生
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  const deleteArticle = await res.json();
+  return deleteArticle;
 };
