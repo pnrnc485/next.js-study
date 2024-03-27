@@ -9,6 +9,7 @@ const CreateBlogPage = () => {
   const [id, setId] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
+  const [imageId, setImageId] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,7 +17,7 @@ const CreateBlogPage = () => {
 
     setLoading(true);
 
-    await createArticle(id, title, content);
+    await createArticle(id, title, content, imageId);
 
     setLoading(false);
     router.push("/");
@@ -57,6 +58,18 @@ const CreateBlogPage = () => {
             type="text"
             className="shadow border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none"
             onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="text-gray-700 text-sm font-bold mb-2">画像ID</label>
+          <input
+            type="number"
+            className="shadow border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none"
+            value={imageId}
+            onChange={(e) =>
+              setImageId(e.target.value ? parseInt(e.target.value, 10) : 0)
+            }
           />
         </div>
 

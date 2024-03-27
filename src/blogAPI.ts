@@ -40,7 +40,8 @@ export const getDetailArticle = async (id: string): Promise<Article> => {
 export const createArticle = async (
   id: string,
   title: string,
-  content: string
+  content: string,
+  imageId: number
 ): Promise<Article> => {
   const currentDateTime = new Date().toISOString();
   const res = await fetch(`http://localhost:3005/posts`, {
@@ -48,7 +49,13 @@ export const createArticle = async (
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id, title, content, createdAt: currentDateTime }),
+    body: JSON.stringify({
+      id,
+      title,
+      content,
+      imageId,
+      createdAt: currentDateTime,
+    }),
   });
 
   if (!res.ok) {
