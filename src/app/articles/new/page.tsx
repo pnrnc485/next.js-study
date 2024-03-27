@@ -17,7 +17,14 @@ const CreateBlogPage = () => {
 
     setLoading(true);
 
-    await createArticle(id, title, content, imageId);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    await fetch(`${API_URL}/api/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id, title, content, imageId }),
+    });
 
     setLoading(false);
     router.push("/");
