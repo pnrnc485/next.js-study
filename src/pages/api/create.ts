@@ -1,6 +1,5 @@
 import { supabase } from "@/utils/supabaseClient";
 import { NextApiRequest, NextApiResponse } from "next";
-import { notFound } from "next/navigation";
 
 export default async function handler(
   req: NextApiRequest,
