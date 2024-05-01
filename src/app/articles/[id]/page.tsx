@@ -10,8 +10,6 @@ const Article = async ({ params }: { params: { id: string } }) => {
       revalidate: 10,
     },
   });
-  console.log("res----------");
-  console.log(res);
   const detailArticle = await res.json();
 
   return (

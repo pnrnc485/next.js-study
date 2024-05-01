@@ -4,8 +4,8 @@ import { notFound, usePathname } from "next/navigation";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request, res: NextApiResponse) {
-  // const id = req.url.split("/blog/")[1];
-  const id = usePathname()!.split("/").pop();
+  // const id = usePathname()!.split("/").pop();
+  const id = req.url.split("/blog/")[1];
   const { data: post, error } = await supabase
     .from("posts")
     .select("*")
