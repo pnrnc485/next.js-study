@@ -8,7 +8,7 @@ export async function GET(req: Request, res: NextApiResponse) {
     return NextResponse.json(error);
   }
 
-  return NextResponse.json(posts, { status: 200 });
+  return res.status(200).json(posts);
 }
 
 export async function POST(req: Request, res: NextApiResponse) {
